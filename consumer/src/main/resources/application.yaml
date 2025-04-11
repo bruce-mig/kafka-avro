@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: consumer
+  kafka:
+    bootstrap-servers: "127.0.0.1:9092"
+    consumer:
+      group-id: "bruce-mig"
+      key-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+      value-deserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
+      auto-offset-reset: "earliest"
+      properties:
+        schema:
+          registry:
+            url: "http://127.0.0.1:8081"
+        specific:
+          avro:
+            reader: "true"
+
+topic:
+  name: avro-topic
